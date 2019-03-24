@@ -12,6 +12,10 @@ shards:
     github: crystal-loot/exception_page
     version: 0.1.2
 
+  img_kit:
+    github: Hentioe/imgkit.cr
+    commit: d4dd2f88e688d2090d59735b653b3b52803e9f96
+
   kemal:
     github: kemalcr/kemal
     version: 0.25.2

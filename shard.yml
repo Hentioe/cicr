@@ -23,6 +23,8 @@ dependencies:
   admiral:
     github: jwaldrip/admiral.cr
     version: ~> 1.8.0
+  img_kit:
+    github: Hentioe/imgkit.cr
 
 development_dependencies:
   ameba:
