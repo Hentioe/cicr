@@ -1,0 +1,13 @@
+version: "3.1"
+
+services:
+  server:
+    image: bluerain/cicr
+    ports:
+      - 8083:8080
+    stdin_open: true
+    environment:
+      ORIGINALS: /data/static/images
+      OUTPUTS: /data/static/images/outputs
+      MULTICORE: -1
+    restart: always

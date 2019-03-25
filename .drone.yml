@@ -1,0 +1,23 @@
+clone:
+  git:
+    image: plugins/git
+    recursive: false
+
+pipeline:
+  test:
+    image: bluerain/cicr:build
+    commands:
+      - shards --production
+      - KEMAL_ENV=test crystal spec
+
+  build:
+    image: bluerain/cicr:build
+    commands:
+      - shards build --release --progress
+
+  build-image:
+    image: docker
+    commands:
+      - docker build . -t bluerain/cicr
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
