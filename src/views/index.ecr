@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <title>cicr - An open-source image hosting server</title>
+    <link rel="stylesheet" href="/lib/bulma-0.7.4/bulma.min.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <script defer src="/js/index.js"></script>
+    <script defer src="/lib/fontawesome-5.7.2/all.min.js"></script>
+</head>
+
+<body>
+    <div id="root">
+        <nav class="navbar has-shadow is-fixed-top" role="navigation" aria-label="main navigation">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a class="navbar-item" href="/">
+                        <strong>cicr</strong>
+                    </a>
+
+                    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                        data-target="navbarBasicExample">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+
+                <div id="navbarBasicExample" class="navbar-menu">
+                    <div class="navbar-start">
+                        <a class="navbar-item" target="_blank" href="https://github.com/Hentioe/cicr/wiki">
+                            <span class="icon has-text-primary">
+                                <i class="fas fa-book"></i>
+                            </span>
+                            <span>
+                                Documentation
+                            </span>
+                        </a>
+                        <a class="navbar-item" target="_blank" href="https://github.com/Hentioe/cicr/issues">
+                            <span class="icon has-text-info">
+                                <i class="fas fa-info-circle"></i>
+                            </span>
+                            <span>
+                                Help
+                            </span>
+                        </a>
+
+                        <div class="navbar-item has-dropdown is-hoverable">
+                            <a class="navbar-link">
+                                Features
+                            </a>
+
+                            <div class="navbar-dropdown">
+                                <a class="navbar-item" href="#resize">
+                                    Resize
+                                </a>
+                                <a class="navbar-item" href="#blur">
+                                    Blur
+                                </a>
+                                <a class="navbar-item" href="#crop">
+                                    Crop
+                                </a>
+                                <hr class="navbar-divider">
+                                <a class="navbar-item" href="#more">
+                                    More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="navbar-end">
+                        <a class="navbar-item" href="https://github.com/Hentioe/cicr" target="_blank">
+                            <span class="icon" style="color: #333;">
+                                <i class="fab fa-lg fa-github-alt"></i>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <section class="hero is-medium is-info is-bold">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">
+                        Welcome
+                    </h1>
+                    <h2 class="subtitle">
+                        This is an open-source file hosting server that adjusts images in real time
+                    </h2>
+                </div>
+            </div>
+        </section>
+        <div class="container">
+            <section class="section cicr-resize" id="resize">
+                <h1 class="title">Resize</h1>
+                <h2 class="subtitle">
+                    You can resize the image by adjusting width and height,
+                    while you can also resize it by retaining the aspect ratio.
+                </h2>
+                <div class="columns">
+                    <div class="column is-3">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="/display/demo.jpg?processes=" alt="Original size">
+                            </div>
+                            <div class="card-content">
+                                <div class="content">
+                                    Original (300x200)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-3">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="/display/demo.jpg?processes=resize.w_150" alt="Limit width: 150">
+                            </div>
+                            <div class="card-content">
+                                <div class="content">
+                                    Limit width: 150 (w_150)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-3">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="/display/demo.jpg?processes=resize.h_150" alt="Limit height: 150">
+                            </div>
+                            <div class="card-content">
+                                <div class="content">
+                                    Limit height: 150 (h_150)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-3">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="/display/demo.jpg?processes=resize.w_150,h_150" alt="150x150">
+                            </div>
+                            <div class="card-content">
+                                <div class="content">
+                                    150x150
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <hr>
+
+            <section class="section cicr-blur" id="blur">
+                <h1 class="title">Blur</h1>
+                <h2 class="subtitle">
+                    Gaussian blurred image supports to be resized as well.
+                </h2>
+                <div class="columns">
+                    <div class="column is-3">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="/display/demo.jpg?processes=blur.s_1" alt="Sigma: 1">
+                            </div>
+                            <div class="card-content">
+                                <div class="content">
+                                    Sigma: 1
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-3">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="/display/demo.jpg?processes=blur.s_2" alt="Sigma: 2 (w_150)">
+                            </div>
+                            <div class="card-content">
+                                <div class="content">
+                                    Sigma: 2 (w_150)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-3">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="/display/demo.jpg?processes=blur.s_3.5|resize.h_150" alt="Sigma: 3.5 (h_150)">
+                            </div>
+                            <div class="card-content">
+                                <div class="content">
+                                    Sigma: 3.5 (h_150)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-3">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="/display/demo.jpg?processes=blur.s_10|resize.w_150,h_150" alt="Sigma: 10 (150x150)">
+                            </div>
+                            <div class="card-content">
+                                <div class="content">
+                                    Sigma: 10 (150x150)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr>
+
+            <section class="section cicr-crop" id="crop">
+                <h1 class="title">Crop</h1>
+                <h2 class="subtitle">
+                    You can crop the image based on horizontal/vertical coordinates and width/height.
+                    It supports to be resized and blurred as well.
+                </h2>
+                <div class="columns">
+                    <div class="column is-4">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="/display/demo.jpg?processes=crop.h_100" alt="h: 100">
+                            </div>
+                            <div class="card-content">
+                                <div class="content">
+                                    h: 100
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-4">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="/display/demo.jpg?processes=crop.h_100,y_100" alt="h: 100, y: 100">
+                            </div>
+                            <div class="card-content">
+                                <div class="content">
+                                    h: 100, y: 100
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-4">
+                        <div class="card">
+                            <div class="card-image">
+                                <img src="/display/demo.jpg?processes=crop.h_100,w_100,y_50,x_50" alt="h_100,w_100,y_50,x_50">
+                            </div>
+                            <div class="card-content">
+                                <div class="content">
+                                    h: 100, w: 100, y: 50, x: 50
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <hr>
+            <section class="section cicr-more" id="more">
+
+                <h1 class="title">More</h1>
+                <h2 class="subtitle">
+                    An example of a combined featrues
+                </h2>
+                <div class="cicr-composite head">
+                    <img src="/display/demo.jpg?processes=crop.w_100,h_50" alt="Composite">
+                    <img src="/display/demo.jpg?processes=crop.w_200,h_50,x_100" alt="Composite">
+                </div>
+                <div class="cicr-composite foot">
+                    <img src="/display/demo.jpg?processes=crop.y_50,w_200,h_150,h_150|blur.s_3.5" alt="Composite">
+                    <img src="/display/demo.jpg?processes=crop.y_50,x_200,w_100" alt="Composite">
+                </div>
+            </section>
+        </div>
+        <footer class="footer">
+            <div class="content has-text-centered">
+                <p>
+                    <strong>cicr</strong> by <a href="https://github.com/Hentioe">Hentioe</a>. The source code is
+                    licensed
+                    <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+                    is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+                </p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -18,7 +18,7 @@ module CICR::Router
 
   def init_routes(originals, outputs)
     get "/" do
-      "Hello CICR!"
+      render "src/views/index.ecr"
     end
 
     Display.init_routes(originals, outputs)

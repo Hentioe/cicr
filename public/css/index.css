@@ -1,0 +1,4 @@
+.cicr-resize .card-image,
+.cicr-blur .card-image {
+    height: 200px;
+}
