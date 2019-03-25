@@ -24,8 +24,8 @@ module CICR
       prod: config.prod,
       gzip: config.gzip,
       bind: config.bind,
-      originals: "originals",
-      outputs: "outputs"
+      originals: config.originals,
+      outputs: config.outputs
     )
   end
 end
