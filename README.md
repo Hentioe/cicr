@@ -24,4 +24,8 @@
 
   `https://cicr.bluerain.io/display/demo.jpg?processes=crop.y_50,w_200,h_150,h_150|blur.s_3.5|resize.w_100`
 
-[WIP]
+## TODO
+
+* [ ] 实现主从进程的 processing 状态锁定
+* [ ] 实现后台任务，立即响应等待图片
+* [ ] 增加 `ascii` 函数将图片转换为文本字符
