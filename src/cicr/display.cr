@@ -10,7 +10,8 @@ module CICR::Display
     originals = config.originals
     get "/display/:fpath" do |env|
       fpath = env.params.url["fpath"]
-      processes_expr = env.params.query["processes"]
+      processes_expr = env.params.query["processes"]? || ""
+
       sign = sign(fpath, processes_expr)
 
       extension = File.extname(fpath)

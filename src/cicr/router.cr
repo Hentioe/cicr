@@ -1,4 +1,5 @@
 require "kemal"
+require "json"
 
 module CICR::Router
   extend self
@@ -23,5 +24,13 @@ module CICR::Router
     end
 
     Display.init_routes
+
+    error 500 do |env, ex|
+      data = Hash(String, String?).new
+      data["message"] = ex.message
+      env.response.status_code = 400
+      env.response.content_type = "application/json; charset=utf-8"
+      data.to_json
+    end
   end
 end
