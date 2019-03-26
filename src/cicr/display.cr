@@ -1,4 +1,5 @@
 require "img_kit"
+require "digest"
 
 module CICR::Display
   extend self
@@ -7,33 +8,39 @@ module CICR::Display
     get "/display/:fpath" do |env|
       fpath = env.params.url["fpath"]
       processes_expr = env.params.query["processes"]
-      processor_pipe = processes(processes_expr)
-      img = ImgKit::Image.new("#{originals}/#{fpath}")
-      processor_pipe.each do |processor, args|
-        case processor
-        when :resize
-          if args.is_a?(NamedTuple(width: Int32, height: Int32))
-            img.resize(**args)
+      sign = sign(fpath, processes_expr)
+
+      extension = File.extname(fpath)
+      output = "#{outputs}/#{sign}#{extension}"
+      unless File.exists?(output)
+        processor_pipe = processes(processes_expr)
+        img = ImgKit::Image.new("#{originals}/#{fpath}")
+        processor_pipe.each do |processor, args|
+          case processor
+          when :resize
+            if args.is_a?(NamedTuple(width: Int32, height: Int32))
+              img.resize(**args)
+            end
+          when :blur
+            if args.is_a?(NamedTuple(sigma: Float64))
+              img.blur(**args)
+            end
+          when :crop
+            if args.is_a?(NamedTuple(width: Int32, height: Int32, x: Int32, y: Int32))
+              img.crop(**args)
+            end
+          else
           end
-        when :blur
-          if args.is_a?(NamedTuple(sigma: Float64))
-            img.blur(**args)
-          end
-        when :crop
-          if args.is_a?(NamedTuple(width: Int32, height: Int32, x: Int32, y: Int32))
-            img.crop(**args)
-          end
-        else
         end
+        img.save(output)
+        img.finish
       end
-      output = "#{outputs}/demo.jpg"
-      img.save(output)
-      # sign = sign(fpath)
       send_file env, output
     end
   end
 
-  def sign(fpath, params)
+  def sign(fpath, processes_expr)
+    Digest::MD5.hexdigest("#{fpath}?#{processes_expr}")[0..7]
   end
 
   RESIZE_PROCESS_MATCH = /resize\..+/
@@ -41,10 +48,6 @@ module CICR::Display
   CROP_PROCESS_MATCH   = /crop\..+/
 
   def processes(expr)
-    # resize.w_100,h_100|blur.s_10|crop.x_1
-    # type ProcessArgsType = Tuple(Symbol, Int32, Int32) |
-    #                Tuple(Symbol, Float64) |
-    #                Tuple(Symbol, Int32, Int32, Int32, Int32)
     pipe = Array(Tuple(Symbol, NamedTuple(width: Int32, height: Int32)) |
                  Tuple(Symbol, NamedTuple(sigma: Float64)) |
                  Tuple(Symbol, NamedTuple(width: Int32, height: Int32, x: Int32, y: Int32))).new

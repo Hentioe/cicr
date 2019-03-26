@@ -8,7 +8,7 @@
 
   `https://cicr.bluerain.io/display/demo.jpg?processes=resize.w_150,h_150`
 
-* 保留横纵比例缩放图片(限制宽度为 150， 高度自适应)
+* 保留纵横比例缩放图片(限制宽度为 150， 高度自适应)
 
   `https://cicr.bluerain.io/display/demo.jpg?processes=resize.w_150`
 
