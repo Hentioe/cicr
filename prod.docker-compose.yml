@@ -7,7 +7,8 @@ services:
       - 8083:8080
     stdin_open: true
     environment:
-      ORIGINALS: /data/static/images
-      OUTPUTS: /data/static/images/outputs
       MULTICORE: -1
+    volumes:
+      - /data/static/images:/originals
+      - /data/static/images/outputs:/outputs
     restart: always
