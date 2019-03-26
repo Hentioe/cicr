@@ -85,12 +85,14 @@ module CICR::CLI
 
     define_flag originals : String,
       description: "Original image directory path",
+      default: "originals",
       long: originals,
       short: o,
       required: true
 
     define_flag outputs : String,
       description: "Output image directory path",
+      default: "outputs",
       long: outputs,
       short: O,
       required: true
