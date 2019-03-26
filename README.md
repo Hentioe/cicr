@@ -20,7 +20,7 @@
 
   `https://cicr.bluerain.io/display/demo.jpg?processes=crop.h_100,w_100,y_50,x_50`
 
-* 使用管道操作符 `|` 组合函数，按顺序将前一个函数的输出作为后一个函数的输入
+* 使用管道 `|` 组合函数
 
   `https://cicr.bluerain.io/display/demo.jpg?processes=crop.y_50,w_200,h_150,h_150|blur.s_3.5|resize.w_100`
 
