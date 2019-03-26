@@ -3,24 +3,25 @@ require "kemal"
 module CICR::Router
   extend self
 
-  def start(port, public, prod, gzip, bind, originals, outputs)
-    serve_static({"gzip" => gzip})
-    public_folder public
+  def start
+    config = CLI::Config.instance
+    serve_static({"gzip" => config.gzip})
+    public_folder config.public
 
-    init_routes(originals, outputs)
+    init_routes
 
-    Kemal.config.env = "production" if prod
-    Kemal.run(args: nil) do |config|
-      server = config.server.not_nil!
-      server.bind_tcp bind, port, reuse_port: true
+    Kemal.config.env = "production" if config.prod
+    Kemal.run(args: nil) do |kermal_cfg|
+      server = kermal_cfg.server.not_nil!
+      server.bind_tcp config.bind, config.port, reuse_port: true
     end
   end
 
-  def init_routes(originals, outputs)
+  def init_routes
     get "/" do
       render "src/views/index.ecr"
     end
 
-    Display.init_routes(originals, outputs)
+    Display.init_routes
   end
 end

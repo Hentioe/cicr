@@ -11,22 +11,14 @@ module CICR
     config = CLI::Config.instance
     mc = config.multicore
     Multicore.startup(mc) do
-      start(config)
+      run
     end
   end
 
-  def start(config)
+  def run
     process_id = ENV["MULTICORE_ID"]?
     puts "Starting process: #{process_id}" if process_id
-    Router.start(
-      port: config.port,
-      public: config.public,
-      prod: config.prod,
-      gzip: config.gzip,
-      bind: config.bind,
-      originals: config.originals,
-      outputs: config.outputs
-    )
+    Router.start
   end
 end
 
