@@ -13,7 +13,7 @@ pipeline:
   build:
     image: bluerain/cicr:build
     commands:
-      - shards build --release --progress
+      - shards build --release --progress --production
 
   build-image:
     image: docker
