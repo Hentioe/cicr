@@ -8,7 +8,7 @@ pipeline:
     image: bluerain/cicr:build
     commands:
       - shards --production
-      - KEMAL_ENV=test crystal spec
+      # - KEMAL_ENV=test crystal spec
 
   build:
     image: bluerain/cicr:build
