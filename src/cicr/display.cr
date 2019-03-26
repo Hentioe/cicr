@@ -4,7 +4,10 @@ require "digest"
 module CICR::Display
   extend self
 
-  def init_routes(originals, outputs)
+  def init_routes
+    config = CLI::Config.instance
+    outputs = config.outputs
+    originals = config.originals
     get "/display/:fpath" do |env|
       fpath = env.params.url["fpath"]
       processes_expr = env.params.query["processes"]
