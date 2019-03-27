@@ -10,6 +10,7 @@ module CICR::Display
     originals = config.originals
     get "/display/:fpath" do |env|
       fpath = env.params.url["fpath"]
+      raise NotFoundException.new(fpath) unless File.exists?("#{originals}/#{fpath}")
       processes_expr = env.params.query["processes"]? || ""
 
       sign = sign(fpath, processes_expr)

@@ -27,8 +27,16 @@ module CICR::Router
 
     error 500 do |env, ex|
       data = Hash(String, String?).new
-      data["message"] = ex.message
-      env.response.status_code = 400
+      message = "internal error"
+      status_code = 400
+      if ex.is_a?(NotFoundException)
+        status_code = 404
+        message = "resource '#{ex.message}' does not exist"
+      else
+        message = ex.message
+      end
+      data["message"] = message
+      env.response.status_code = status_code
       env.response.content_type = "application/json; charset=utf-8"
       data.to_json
     end

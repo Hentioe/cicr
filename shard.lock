@@ -14,7 +14,7 @@ shards:
 
   img_kit:
     github: Hentioe/imgkit.cr
-    commit: 691a71719bb8e819ffe7beda2289fddec5638ffc
+    commit: f1420e14d5161e3f0c35aa4951350e1dca9ff592
 
   kemal:
     github: kemalcr/kemal
