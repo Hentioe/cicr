@@ -2,7 +2,7 @@
 
 内置常用函数的图片托管服务器
 
-![LOGO](https://github.com/cicr-project/cicr/raw/master/originals/logo.png)
+![LOGO](https://github.com/cicr-project/cicr/raw/master/originals/logo.2.png)
 
 ## 使用
 
