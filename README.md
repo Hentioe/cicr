@@ -1,4 +1,4 @@
-# CICR Core Server [![Build Status](https://github-ci.bluerain.io/api/badges/Hentioe/cicr/status.svg)](https://github-ci.bluerain.io/Hentioe/cicr)
+# CICR Core Server [![Build Status](https://github-ci.bluerain.io/api/badges/cicr-project/cicr/status.svg)](https://github-ci.bluerain.io/cicr-project/cicr)
 
 内置常用函数的图片托管服务器
 
