@@ -2,6 +2,8 @@
 
 内置常用函数的图片托管服务器
 
+![LOGO](https://github.com/cicr-project/cicr/raw/master/originals/logo.png)
+
 ## 使用
 
 * 通过 `resize` 函数指定图片的高度和宽度(150x150)
