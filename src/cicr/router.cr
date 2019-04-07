@@ -20,7 +20,7 @@ module CICR::Router
 
   def init_routes
     get "/" do
-      render "src/views/index.ecr"
+      render "src/views/index.html.ecr"
     end
 
     Display.init_routes

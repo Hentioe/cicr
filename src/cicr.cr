@@ -4,18 +4,14 @@ require "multicore"
 module CICR
   VERSION = "0.1.0-dev"
 
-  extend self
-
-  def start
+  def self.start
     CLI::Parser.run
     config = CLI::Config.instance
     mc = config.multicore
-    Multicore.startup(mc) do
-      run
-    end
+    Multicore.startup(mc) { run }
   end
 
-  def run
+  def self.run
     process_id = ENV["MULTICORE_ID"]?
     puts "Starting process: #{process_id}" if process_id
     Router.start

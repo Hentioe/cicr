@@ -8,39 +8,45 @@ module CICR::Display
     config = CLI::Config.instance
     outputs = config.outputs
     originals = config.originals
+
     get "/display/:fpath" do |env|
       fpath = env.params.url["fpath"]
       raise NotFoundException.new(fpath) unless File.exists?("#{originals}/#{fpath}")
-      processes_expr = env.params.query["processes"]? || ""
 
+      processes_expr = env.params.query["processes"]? || ""
       sign = sign(fpath, processes_expr)
 
       extension = File.extname(fpath)
       output = "#{outputs}/#{sign}#{extension}"
+
       unless File.exists?(output)
         processor_pipe = processes(processes_expr)
         img = ImgKit::Image.new("#{originals}/#{fpath}")
         processor_pipe.each do |processor, args|
-          case processor
-          when :resize
-            if args.is_a?(NamedTuple(width: Int32, height: Int32))
-              img.resize(**args)
-            end
-          when :blur
-            if args.is_a?(NamedTuple(sigma: Float64))
-              img.blur(**args)
-            end
-          when :crop
-            if args.is_a?(NamedTuple(width: Int32, height: Int32, x: Int32, y: Int32))
-              img.crop(**args)
-            end
-          else
-          end
+          process_img(img, processor, args)
         end
         img.save(output)
         img.finish
       end
       send_file env, output
+    end
+  end
+
+  def process_img(img, processor, args)
+    case processor
+    when :resize
+      if args.is_a?(NamedTuple(width: Int32, height: Int32))
+        img.resize(**args)
+      end
+    when :blur
+      if args.is_a?(NamedTuple(sigma: Float64))
+        img.blur(**args)
+      end
+    when :crop
+      if args.is_a?(NamedTuple(width: Int32, height: Int32, x: Int32, y: Int32))
+        img.crop(**args)
+      end
+    else
     end
   end
 
