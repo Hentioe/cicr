@@ -35,20 +35,23 @@ module CICR::Display
   def process_img(img, processor, args)
     case processor
     when :resize
-      if args.is_a?(NamedTuple(width: Int32, height: Int32))
+      if args.is_a?(ResizeArgs)
         img.resize(**args)
       end
     when :blur
-      if args.is_a?(NamedTuple(sigma: Float64))
+      if args.is_a?(BlurArgs)
         img.blur(**args)
       end
     when :crop
-      if args.is_a?(NamedTuple(width: Int32, height: Int32, x: Int32, y: Int32))
+      if args.is_a?(CropArgs)
         img.crop(**args)
       end
-    else
     end
   end
+
+  alias ResizeArgs = NamedTuple(width: Int32, height: Int32)
+  alias BlurArgs = NamedTuple(sigma: Float64)
+  alias CropArgs = NamedTuple(width: Int32, height: Int32, x: Int32, y: Int32)
 
   def sign(fpath, processes_expr)
     Digest::MD5.hexdigest("#{fpath}?#{processes_expr}")[0..7]
@@ -59,9 +62,10 @@ module CICR::Display
   CROP_PROCESS_MATCH   = /crop\..+/
 
   def processes(expr)
-    pipe = Array(Tuple(Symbol, NamedTuple(width: Int32, height: Int32)) |
-                 Tuple(Symbol, NamedTuple(sigma: Float64)) |
-                 Tuple(Symbol, NamedTuple(width: Int32, height: Int32, x: Int32, y: Int32))).new
+    pipe = Array(Tuple(Symbol, ResizeArgs) |
+                 Tuple(Symbol, BlurArgs) |
+                 Tuple(Symbol, CropArgs)).new
+
     expr.split "|", remove_empty: true do |process|
       if process =~ RESIZE_PROCESS_MATCH
         width, height = parse_resize_process(process)
