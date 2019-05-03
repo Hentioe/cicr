@@ -62,9 +62,10 @@ module CICR::Display
   CROP_PROCESS_MATCH   = /crop\..+/
 
   def processes(expr)
-    pipe = Array(Tuple(Symbol, ResizeArgs) |
-                 Tuple(Symbol, BlurArgs) |
-                 Tuple(Symbol, CropArgs)).new
+    pipe =
+      Array(Tuple(Symbol, ResizeArgs) |
+            Tuple(Symbol, BlurArgs) |
+            Tuple(Symbol, CropArgs)).new
 
     expr.split "|", remove_empty: true do |process|
       if process =~ RESIZE_PROCESS_MATCH
