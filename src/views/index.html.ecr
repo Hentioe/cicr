@@ -1,290 +1,359 @@
 <!DOCTYPE html>
 <html class="has-navbar-fixed-top">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"
+    />
     <title>cicr - An open-source image hosting server</title>
-    <link rel="shortcut icon" type="image/png" href="/display/logo.png?processes=resize.w_16" />
-    <link rel="stylesheet" href="/lib/bulma-0.7.4/bulma.min.css">
-    <link rel="stylesheet" href="/css/index.css">
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="/display/logo.png?processes=resize.w_16"
+    />
+    <link rel="stylesheet" href="/lib/bulma-0.7.4/bulma.min.css" />
+    <link rel="stylesheet" href="/css/index.css" />
     <script defer src="/js/index.js"></script>
-    <script defer src="/lib/fontawesome-5.7.2/all.min.js"></script>
-</head>
+    <script defer src="/lib/fontawesome-5.8.1/all.min.js"></script>
+  </head>
 
-<body>
+  <body>
     <div id="root">
-        <nav class="navbar has-shadow is-fixed-top" role="navigation" aria-label="main navigation">
-            <div class="container">
-                <div class="navbar-brand">
-                    <a class="navbar-item" href="/">
-                        <img src="/display/logo.2.png?processes=resize.w_150">
-                    </a>
-
-                    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-                        data-target="navbarBasicExample">
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                    </a>
-                </div>
-
-                <div id="navbarBasicExample" class="navbar-menu">
-                    <div class="navbar-start">
-                        <a class="navbar-item" target="_blank" href="https://github.com/Hentioe/cicr/wiki">
-                            <span class="icon has-text-primary">
-                                <i class="fas fa-book"></i>
-                            </span>
-                            <span>
-                                文档
-                            </span>
-                        </a>
-                        <a class="navbar-item" target="_blank" href="https://github.com/Hentioe/cicr/issues">
-                            <span class="icon has-text-info">
-                                <i class="fas fa-info-circle"></i>
-                            </span>
-                            <span>
-                                帮助
-                            </span>
-                        </a>
-
-                        <div class="navbar-item has-dropdown is-hoverable">
-                            <a class="navbar-link">
-                                功能
-                            </a>
-
-                            <div class="navbar-dropdown">
-                                <a class="navbar-item" href="#resize">
-                                    大小调整
-                                </a>
-                                <a class="navbar-item" href="#blur">
-                                    图像模糊
-                                </a>
-                                <a class="navbar-item" href="#crop">
-                                    剪裁图片
-                                </a>
-                                <hr class="navbar-divider">
-                                <a class="navbar-item" href="#more">
-                                    更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="navbar-end">
-                        <a class="navbar-item" href="https://github.com/Hentioe/cicr" target="_blank">
-                            <span class="icon" style="color: #333;">
-                                <i class="fab fa-lg fa-github-alt"></i>
-                            </span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <section class="hero is-medium is-info is-bold">
-            <div class="hero-body">
-                <div class="container">
-                    <h1 class="title">
-                        开源的图片托管服务
-                    </h1>
-                    <h2 class="subtitle">
-                        cicr 是一个内置常用函数的高级图片托管服务器应用程序
-                    </h2>
-                </div>
-            </div>
-        </section>
+      <nav
+        class="navbar has-shadow is-fixed-top"
+        role="navigation"
+        aria-label="main navigation"
+      >
         <div class="container">
-            <section class="section cicr-resize" id="resize">
-                <h1 class="title">调整大小</h1>
-                <h2 class="subtitle">
-                    指定长度和宽度调整图片大小，也可以保留其纵横比例缩放
-                </h2>
-                <div class="columns">
-                    <div class="column is-3">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="/display/demo.jpg" alt="Original size">
-                            </div>
-                            <div class="card-content">
-                                <div class="content">
-                                    原始尺寸 (300x200)
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column is-3">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="/display/demo.jpg?processes=resize.w_150" alt="Limit width: 150">
-                            </div>
-                            <div class="card-content">
-                                <div class="content">
-                                    宽度限制: 150 (w_150)
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column is-3">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="/display/demo.jpg?processes=resize.h_150" alt="Limit height: 150">
-                            </div>
-                            <div class="card-content">
-                                <div class="content">
-                                    高度限制: 150 (h_150)
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column is-3">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="/display/demo.jpg?processes=resize.w_150,h_150" alt="150x150">
-                            </div>
-                            <div class="card-content">
-                                <div class="content">
-                                    150x150
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <hr>
+          <div class="navbar-brand">
+            <a class="navbar-item" href="/">
+              <img src="/display/logo.2.png?processes=resize.w_150" />
+            </a>
 
-            <section class="section cicr-blur" id="blur">
-                <h1 class="title">图像模糊</h1>
-                <h2 class="subtitle">
-                    提供用以高斯模糊的 Sigma 值，在模糊的同时也能调整大小
-                </h2>
-                <div class="columns">
-                    <div class="column is-3">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="/display/demo.jpg?processes=blur.s_1" alt="Sigma: 1">
-                            </div>
-                            <div class="card-content">
-                                <div class="content">
-                                    Sigma: 1
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column is-3">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="/display/demo.jpg?processes=blur.s_2|resize.w_150" alt="Sigma: 2 (w_150)">
-                            </div>
-                            <div class="card-content">
-                                <div class="content">
-                                    Sigma: 2 (w_150)
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column is-3">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="/display/demo.jpg?processes=blur.s_3.5|resize.h_150" alt="Sigma: 3.5 (h_150)">
-                            </div>
-                            <div class="card-content">
-                                <div class="content">
-                                    Sigma: 3.5 (h_150)
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column is-3">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="/display/demo.jpg?processes=blur.s_10|resize.w_150,h_150"
-                                    alt="Sigma: 10 (150x150)">
-                            </div>
-                            <div class="card-content">
-                                <div class="content">
-                                    Sigma: 10 (150x150)
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <a
+              role="button"
+              class="navbar-burger burger"
+              aria-label="menu"
+              aria-expanded="false"
+              data-target="navbarBasicExample"
+            >
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
 
-            <hr>
+          <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+              <a
+                class="navbar-item"
+                target="_blank"
+                href="https://github.com/Hentioe/cicr/wiki"
+              >
+                <span class="icon has-text-primary">
+                  <i class="fas fa-book"></i>
+                </span>
+                <span>
+                  文档
+                </span>
+              </a>
+              <a
+                class="navbar-item"
+                target="_blank"
+                href="https://github.com/Hentioe/cicr/issues"
+              >
+                <span class="icon has-text-info">
+                  <i class="fas fa-info-circle"></i>
+                </span>
+                <span>
+                  帮助
+                </span>
+              </a>
 
-            <section class="section cicr-crop" id="crop">
-                <h1 class="title">剪裁图片</h1>
-                <h2 class="subtitle">
-                    指定垂直高度和水平宽度以及横纵座标来自由的剪裁图片，同时还能调整大小并模糊图像
-                </h2>
-                <div class="columns">
-                    <div class="column is-4">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="/display/demo.jpg?processes=crop.h_100" alt="h: 100">
-                            </div>
-                            <div class="card-content">
-                                <div class="content">
-                                    高度: 100
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column is-4">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="/display/demo.jpg?processes=crop.h_100,y_100" alt="h: 100, y: 100">
-                            </div>
-                            <div class="card-content">
-                                <div class="content">
-                                    高度: 100, 纵坐标: 100
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="column is-4">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="/display/demo.jpg?processes=crop.h_100,w_100,y_50,x_50"
-                                    alt="h_100,w_100,y_50,x_50">
-                            </div>
-                            <div class="card-content">
-                                <div class="content">
-                                    高: 100, 宽: 100, 纵: 50, 横: 50
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <hr>
-            <section class="section cicr-more" id="more">
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                  功能
+                </a>
 
-                <h1 class="title">更多</h1>
-                <h2 class="subtitle">
-                    一个组合功能的例子
-                </h2>
-                <div class="cicr-composite head">
-                    <img src="/display/demo.jpg?processes=crop.w_100,h_50" alt="Composite">
-                    <img src="/display/demo.jpg?processes=crop.w_200,h_50,x_100" alt="Composite">
+                <div class="navbar-dropdown">
+                  <a class="navbar-item" href="#resize">
+                    大小调整
+                  </a>
+                  <a class="navbar-item" href="#blur">
+                    图像模糊
+                  </a>
+                  <a class="navbar-item" href="#crop">
+                    剪裁图片
+                  </a>
+                  <hr class="navbar-divider" />
+                  <a class="navbar-item" href="#more">
+                    更多
+                  </a>
                 </div>
-                <div class="cicr-composite foot">
-                    <img src="/display/demo.jpg?processes=crop.y_50,w_200,h_150,h_150|blur.s_3.5" alt="Composite">
-                    <img src="/display/demo.jpg?processes=crop.y_50,x_200,w_100" alt="Composite">
-                </div>
-            </section>
-        </div>
-        <footer class="footer">
-            <div class="content has-text-centered">
-                <p>
-                    <strong>cicr</strong> by <a href="https://github.com/Hentioe">Hentioe</a>. The source code is
-                    licensed
-                    <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-                    is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-                </p>
+              </div>
             </div>
-        </footer>
-    </div>
-</body>
 
+            <div class="navbar-end">
+              <a
+                class="navbar-item"
+                href="https://github.com/Hentioe/cicr"
+                target="_blank"
+              >
+                <span class="icon" style="color: #333;">
+                  <i class="fab fa-lg fa-github-alt"></i>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <section class="hero is-medium is-info is-bold">
+        <div class="hero-body">
+          <div class="container">
+            <h1 class="title">
+              开源的图片托管服务
+            </h1>
+            <h2 class="subtitle">
+              cicr 是一个内置常用函数的高级图片托管服务器应用程序
+            </h2>
+          </div>
+        </div>
+      </section>
+      <div class="container">
+        <section class="section cicr-resize" id="resize">
+          <h1 class="title">调整大小</h1>
+          <h2 class="subtitle">
+            指定长度和宽度调整图片大小，也可以保留其纵横比例缩放
+          </h2>
+          <div class="columns">
+            <div class="column is-3">
+              <div class="card">
+                <div class="card-image">
+                  <img src="/display/demo.jpg" alt="Original size" />
+                </div>
+                <div class="card-content">
+                  <div class="content">
+                    原始尺寸 (300x200)
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column is-3">
+              <div class="card">
+                <div class="card-image">
+                  <img
+                    src="/display/demo.jpg?processes=resize.w_150"
+                    alt="Limit width: 150"
+                  />
+                </div>
+                <div class="card-content">
+                  <div class="content">
+                    宽度限制: 150 (w_150)
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column is-3">
+              <div class="card">
+                <div class="card-image">
+                  <img
+                    src="/display/demo.jpg?processes=resize.h_150"
+                    alt="Limit height: 150"
+                  />
+                </div>
+                <div class="card-content">
+                  <div class="content">
+                    高度限制: 150 (h_150)
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column is-3">
+              <div class="card">
+                <div class="card-image">
+                  <img
+                    src="/display/demo.jpg?processes=resize.w_150,h_150"
+                    alt="150x150"
+                  />
+                </div>
+                <div class="card-content">
+                  <div class="content">
+                    150x150
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <hr />
+
+        <section class="section cicr-blur" id="blur">
+          <h1 class="title">图像模糊</h1>
+          <h2 class="subtitle">
+            提供用以高斯模糊的 Sigma 值，在模糊的同时也能调整大小
+          </h2>
+          <div class="columns">
+            <div class="column is-3">
+              <div class="card">
+                <div class="card-image">
+                  <img
+                    src="/display/demo.jpg?processes=blur.s_1"
+                    alt="Sigma: 1"
+                  />
+                </div>
+                <div class="card-content">
+                  <div class="content">
+                    Sigma: 1
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column is-3">
+              <div class="card">
+                <div class="card-image">
+                  <img
+                    src="/display/demo.jpg?processes=blur.s_2|resize.w_150"
+                    alt="Sigma: 2 (w_150)"
+                  />
+                </div>
+                <div class="card-content">
+                  <div class="content">
+                    Sigma: 2 (w_150)
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column is-3">
+              <div class="card">
+                <div class="card-image">
+                  <img
+                    src="/display/demo.jpg?processes=blur.s_3.5|resize.h_150"
+                    alt="Sigma: 3.5 (h_150)"
+                  />
+                </div>
+                <div class="card-content">
+                  <div class="content">
+                    Sigma: 3.5 (h_150)
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column is-3">
+              <div class="card">
+                <div class="card-image">
+                  <img
+                    src="/display/demo.jpg?processes=blur.s_10|resize.w_150,h_150"
+                    alt="Sigma: 10 (150x150)"
+                  />
+                </div>
+                <div class="card-content">
+                  <div class="content">
+                    Sigma: 10 (150x150)
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr />
+
+        <section class="section cicr-crop" id="crop">
+          <h1 class="title">剪裁图片</h1>
+          <h2 class="subtitle">
+            指定垂直高度和水平宽度以及横纵座标来自由的剪裁图片，同时还能调整大小并模糊图像
+          </h2>
+          <div class="columns">
+            <div class="column is-4">
+              <div class="card">
+                <div class="card-image">
+                  <img
+                    src="/display/demo.jpg?processes=crop.h_100"
+                    alt="h: 100"
+                  />
+                </div>
+                <div class="card-content">
+                  <div class="content">
+                    高度: 100
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column is-4">
+              <div class="card">
+                <div class="card-image">
+                  <img
+                    src="/display/demo.jpg?processes=crop.h_100,y_100"
+                    alt="h: 100, y: 100"
+                  />
+                </div>
+                <div class="card-content">
+                  <div class="content">
+                    高度: 100, 纵坐标: 100
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="column is-4">
+              <div class="card">
+                <div class="card-image">
+                  <img
+                    src="/display/demo.jpg?processes=crop.h_100,w_100,y_50,x_50"
+                    alt="h_100,w_100,y_50,x_50"
+                  />
+                </div>
+                <div class="card-content">
+                  <div class="content">
+                    高: 100, 宽: 100, 纵: 50, 横: 50
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <hr />
+        <section class="section cicr-more" id="more">
+          <h1 class="title">更多</h1>
+          <h2 class="subtitle">
+            一个组合功能的例子
+          </h2>
+          <div class="cicr-composite head">
+            <img
+              src="/display/demo.jpg?processes=crop.w_100,h_50"
+              alt="Composite"
+            />
+            <img
+              src="/display/demo.jpg?processes=crop.w_200,h_50,x_100"
+              alt="Composite"
+            />
+          </div>
+          <div class="cicr-composite foot">
+            <img
+              src="/display/demo.jpg?processes=crop.y_50,w_200,h_150,h_150|blur.s_3.5"
+              alt="Composite"
+            />
+            <img
+              src="/display/demo.jpg?processes=crop.y_50,x_200,w_100"
+              alt="Composite"
+            />
+          </div>
+        </section>
+      </div>
+      <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            <strong>cicr</strong> by
+            <a href="https://github.com/Hentioe">Hentioe</a>. The source code is
+            licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+            The website content is licensed
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+              >CC BY NC SA 4.0</a
+            >.
+          </p>
+        </div>
+      </footer>
+    </div>
+  </body>
 </html>
