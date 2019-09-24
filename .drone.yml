@@ -13,7 +13,7 @@ steps:
     image: bluerain/cicr:build
     pull: true
     commands:
-      - shards build cicr --release --progress --production
+      - shards build cicr -Dpreview_mt --release --progress --production
 
   - name: image-build
     image: docker
