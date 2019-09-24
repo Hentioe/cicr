@@ -1,21 +1,21 @@
-clone:
-  git:
-    image: plugins/git
-    recursive: false
+kind: pipeline
+name: default
 
-pipeline:
-  test:
+steps:
+  - name: app-test
+      image: bluerain/cicr:build
+      pull: true
+      commands:
+        - shards --production
+        - KEMAL_ENV=test crystal spec
+
+  - name: app-build
     image: bluerain/cicr:build
+    pull: true
     commands:
-      - shards --production
-      # - KEMAL_ENV=test crystal spec
+      - shards build cicr --release --progress --production
 
-  build:
-    image: bluerain/cicr:build
-    commands:
-      - shards build --release --progress --production
-
-  build-image:
+  - name: image-build
     image: docker
     commands:
       - docker build . -t bluerain/cicr

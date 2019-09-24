@@ -14,7 +14,4 @@ COPY public "$APP_HOME/public"
 WORKDIR $APP_HOME
 
 
-ENV MULTICORE=-1
-
-
-ENTRYPOINT cicr --prod --originals /originals --outputs /outputs -c $MULTICORE
+ENTRYPOINT cicr --prod --originals /originals --outputs /outputs
