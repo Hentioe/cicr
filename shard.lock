@@ -6,7 +6,7 @@ shards:
 
   ameba:
     github: veelenga/ameba
-    version: 0.9.1
+    version: 0.10.1
 
   exception_page:
     github: crystal-loot/exception_page
@@ -14,11 +14,11 @@ shards:
 
   img_kit:
     github: Hentioe/imgkit.cr
-    commit: f1420e14d5161e3f0c35aa4951350e1dca9ff592
+    commit: 787e374e372e68ae64814f8247e82d6ebbc47b47
 
   kemal:
     github: kemalcr/kemal
-    version: 0.25.2
+    version: 0.26.0
 
   kilt:
     github: jeromegn/kilt

@@ -1,7 +1,7 @@
 require "img_kit"
 require "digest"
 
-module CICR::Display
+module CICR::Router::Display
   extend self
 
   def init_routes

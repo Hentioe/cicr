@@ -1,10 +1,11 @@
 require "kemal"
 require "json"
+require "./routers/*"
 
 module CICR::Router
   extend self
 
-  def start
+  def run
     config = CLI::Config.instance
     serve_static({"gzip" => config.gzip})
     public_folder config.public
