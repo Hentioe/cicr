@@ -3,11 +3,11 @@ name: default
 
 steps:
   - name: app-test
-      image: bluerain/cicr:build
-      pull: true
-      commands:
-        - shards --production
-        - KEMAL_ENV=test crystal spec
+    image: bluerain/cicr:build
+    pull: true
+    commands:
+      - shards --production
+      - KEMAL_ENV=test crystal spec
 
   - name: app-build
     image: bluerain/cicr:build

@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  server:
+    image: bluerain/cicr
+    ports:
+      - 8083:8080
+    stdin_open: true
+    volumes:
+      - ${LOCAL_ORIGINALS}:/originals
+      - ${LOCAL_OUTPUTS}:/outputs
+    restart: always
