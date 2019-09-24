@@ -20,9 +20,14 @@ steps:
     commands:
       - docker build . -t bluerain/cicr
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
+      - name: docker_sock
+        path: /var/run/docker.sock
     when:
       branch:
         - master
       event:
         - push
+volumes:
+  - name: docker_sock
+    host:
+      path: /var/run/docker.sock
