@@ -1,3 +1,5 @@
+# 本项目已死，请转向新项目:https://github.com/Hentioe/veemoe-cloud
+
 # CICR Core Server [![Build Status](https://github-ci.bluerain.io/api/badges/Hentioe/cicr/status.svg)](https://github-ci.bluerain.io/Hentioe/cicr)
 
 内置常用函数的图片托管服务器
